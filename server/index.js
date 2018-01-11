@@ -1,5 +1,12 @@
 // dotenv allows us to declare environment variables in a .env file, \
 // find out more here https://github.com/motdotla/dotenv
+
+// REMEMBER!
+// npm run pre-deploy when first create
+// TO PUSH FILES - git push heroku master
+
+// MY WEBSITE URL
+
 require("dotenv").config();
 import express from "express";
 import bodyParser from "body-parser";
@@ -11,7 +18,11 @@ import articleRoutes from "./routes/blog/ArticleRoutes";
 
 mongoose.set("debug", true);
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://jwoo:jwoo@ds151451.mlab.com:51451/aca-test");
+
+// NOTE!!!! // john's hardcoding mlab account!!!!
+// need to create go to own mlab, create mongodb, put my own url there
+// mongoose.connect("mongodb://jwoo:jwoo@ds151451.mlab.com:51451/aca-test");
+mongoose.connect("mongodb://jkilleen15:jkilleen15@ds141796.mlab.com:41796/jkilleen_aca");
 
 const app = express();
 app.use(express.static("public"));
@@ -37,4 +48,3 @@ const port = process.env.PORT || 3001;
 app.listen(port, () => {
   console.log(`Listening on port:${port}`);
 });
-
